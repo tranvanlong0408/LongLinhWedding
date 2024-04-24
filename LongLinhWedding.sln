@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LongLinhWedding", "LongLinhWedding\LongLinhWedding.csproj", "{6EC7B750-EAC4-4B3D-B998-56A1EC9F24EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EC7B750-EAC4-4B3D-B998-56A1EC9F24EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EC7B750-EAC4-4B3D-B998-56A1EC9F24EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EC7B750-EAC4-4B3D-B998-56A1EC9F24EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EC7B750-EAC4-4B3D-B998-56A1EC9F24EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98802E92-54EA-451E-B7BD-45E20EE042CB}
+	EndGlobalSection
+EndGlobal
