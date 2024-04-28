@@ -1361,9 +1361,8 @@
                     </div>
                   </div>
                   <div class="clearfix error-handling-messages">
-                    <div id="success">Thank you</div>
-                    <div id="error"> Error occurred while sending email. Please try again later.
-                    </div>
+                    <div id="success"></div>
+                    <div id="error"></div>
                   </div>
                 </form>
                 <div class="border-style"></div>
@@ -1463,13 +1462,15 @@
     style="display: none;"><i class="ti-arrow-up"></i></a>
   <script src="./js/bii.js"></script>
   <script type="text/javascript" language="javascript">
-    $.getJSON( "./wishbox.json", function( data_wish ) {
-      console.log(data_wish)
-                    $.each( data_wish, function( key, val ) {
-                        $('.wish-box').prepend('<div class="wish-box-item bg"><strong>'+val.fullname+'</strong><p>'+val.wishmessage+'Chúc mừng hạnh phúc! Chúc hai bạn trăm năm hạnh phúc!</p></div>');
-                      
-                    });
-                  });
+      $.ajax({
+          type: "GET",
+          url: "/Home/GetJsonWish",
+          success: function (wishes) {
+              wishes.forEach(function(wish) {
+                $('.wish-box').prepend('<div class="wish-box-item bg"><strong>'+wish.fullName+'</strong><p>'+wish.wishMessage+'</p></div>');
+              });
+          }
+     });
  </script>
   <style type="text/css">
     .mouse-scroll-on-mobile {

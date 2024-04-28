@@ -1,14 +1,1 @@
-[ 
-    {
-        "fullname" : "Nguyễn Văn Vàng",
-        "wishmessage" : "Happy wedding! Chúc hai bạn có cuộc sống mới ngập tràn tiếng cười và niềm vui, sớm có thiên thần nhỏ bồng bé!"
-    }, 
-    {
-        "fullname" : "Nguyễn Văn Đức",
-        "wishmessage" : "Happy wedding! Chúc hai bạn có cuộc sống mới ngập tràn tiếng cười và niềm vui, sớm có thiên thần nhỏ bồng bé!"
-    }, 
-    {
-        "fullname" : "Nguyễn Văn Long",
-        "wishmessage" : "Happy wedding! Chúc hai bạn có cuộc sống mới ngập tràn tiếng cười và niềm vui, sớm có thiên thần nhỏ bồng bé!"
-    } 
-]
+[{"FullName":"Nguyễn Văn Vàng","WishMessage":"Happy wedding! Chúc hai bạn có cuộc sống mới ngập tràn tiếng cười và niềm vui, sớm có thiên thần nhỏ bồng bé!"},{"FullName":"Nguyễn Văn Đức","WishMessage":"Happy wedding! Chúc hai bạn có cuộc sống mới ngập tràn tiếng cười và niềm vui, sớm có thiên thần nhỏ bồng bé!"},{"FullName":"Trần Văn Long","WishMessage":"Chúc hai bạn sớm có con đàn cháu đống, cửa nhà lúc nào cũng đầm ấm, yên vui nhé!"},{"FullName":"Đinh Vương Thùy Linh","WishMessage":"Chúc mừng hạnh phúc hai bạn. Chúc hai bạn bên nhau đầu bạc răng long, sớm có thiên thần nhỏ nhé!"},{"FullName":"Trần Văn A","WishMessage":"Một chương mới đã mở ra với hai bạn rồi. Tôi mong cuộc sống mới của cả hai sẽ tràn ngập hy vọng, hạnh phúc và niềm vui!"}]

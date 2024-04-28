@@ -896,45 +896,64 @@ masonryGridSetting();
                 var wishmessagetxt = $("#content").val();
                 console.log(fullnametxt);
                 console.log(wishmessagetxt);
-                $("#loader").css("display", "inline-block");
-                $.getJSON( "FileInput/wishbox.json", function( data_wish ) {
-                    $.each( data_wish.data, function( key, val ) {
-                        $('.wish-box').prepend('<div class="wish-box-item bg"><strong>'+val.fullname+'</strong><p>'+val.wishmessage+'Chúc mừng hạnh phúc! Chúc hai bạn trăm năm hạnh phúc!</p></div>');
-                      
-                    });
-                  });
 
-
+                var wishModel = {
+                    fullName: fullnametxt,
+                    wishMessage: wishmessagetxt
+                }
                 $.ajax({
                     type: "POST",
-                    url: "/wish",
-                    data: $(form).serialize(),
-                    success: function (res) {
-                        $( "#loader").hide();
-                        if(!res.error){
-                            $('.wish-box').scrollTop(0);
-                            $('.wish-box').prepend('<div class="wish-box-item bg"><strong>'+$(form).find("input[name='name']").val().replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;")+'</strong><p>'+$(form).find("textarea[name='content']").val().replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;")+'</p></div>');
-                            $( "#success").html(res.message).slideDown( "slow" );
-                            setTimeout(function() {
-                            $( "#success").slideUp( "slow" );
-                            }, 5000);
-                        }else{
-                            $( "#error").html(res.message).slideDown( "slow" );
-                            setTimeout(function() {
-                            $( "#error").slideUp( "slow" );
-                            }, 5000);
+                    url: "/Home/PutJsonWish",
+                    data: { wishModel: wishModel },
+                    success: function (statusWriteJsonCode) {
+                        console.log(statusWriteJsonCode)
+                        $('.wish-box').scrollTop(0);
+                        switch (statusWriteJsonCode) {
+                            case "CODE001":
+                                // Xử lý khi statusWriteJsonCode là CODE001 (OK)
+                                $.ajax({
+                                    type: "GET",
+                                    url: "/Home/GetJsonWish",
+                                    success: function (wishes) {
+                                        $('.wish-box').empty();
+                                        wishes.forEach(function (wish) {
+                                            $('.wish-box').prepend('<div class="wish-box-item bg"><strong>' + wish.fullName + '</strong><p>' + wish.wishMessage + '</p></div>');
+                                        });
+                                    }
+                                });
+                                $("#success").html("Cảm ơn bạn đã gửi lời chúc tới chúng tôi").slideDown("slow");
+                                setTimeout(function () {
+                                    $("#success").slideUp("slow");
+                                }, 5000);
+                                break;
+                            case "CODE002":
+                                // Xử lý khi statusWriteJsonCode là CODE002 (File Json không tồn tại)
+                                $("#error").html(res.message).slideDown("slow");
+                                $("#error").html("File Json không tồn tại").slideDown("slow");
+                                setTimeout(function () {
+                                    $("#error").slideUp("slow");
+                                }, 5000);
+                                break;
+                            case "CODE003":
+                                // Xử lý khi statusWriteJsonCode là CODE003 (Các phần tử wish bị null)
+                                break;
+                            case "CODE004":
+                                // Xử lý khi statusWriteJsonCode là CODE004 (File Json rỗng)
+                                break;
+                            case "CODE005":
+                                // Xử lý khi statusWriteJsonCode là CODE005 (FullName đã tồn tại)
+                                $("#error").html("Bạn đã gửi lời chúc, vui lòng check lại").slideDown("slow");
+                                setTimeout(function () {
+                                    $("#error").slideUp("slow");
+                                }, 5000);
+                                break;
+                            default:
+                                // Xử lý khi không nhận diện được statusWriteJsonCode
+                                break;
                         }
-
-                        form.reset();
                     },
-                    error: function() {
-                        $( "#loader").hide();
-                        $( "#error").slideDown( "slow" );
-                        $('.wish-box').prepend('<div class="wish-box-item bg"><strong>'+$(form).find("input[name='name']").val().replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;")+'</strong><p>'+$(form).find("textarea[name='content']").val().replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;")+'</p></div>');
-                      
-                        setTimeout(function() {
-                        $( "#error").slideUp( "slow" );
-                        }, 5000);
+                    error: function () {
+                        console.log("lỗi")
                     }
                 });
                 return false;
